@@ -17,3 +17,11 @@ variable "get_lambda" {
   type        = string
   description = "ARN for lambda that will response on a get requests"
 }
+
+variable "post_lambda_name" {
+  type = string
+}
+
+variable "get_lambda_name" {
+  type = string
+}

@@ -22,3 +22,13 @@ resource "aws_lambda_function" "application" {
   tags = local.tags
 }
 
+resource "aws_lambda_function" "application_info" {
+  filename         = data.archive_file.lambda_info_zip_file.output_path
+  source_code_hash = data.archive_file.lambda_info_zip_file.output_base64sha256
+  runtime          = "python3.9"
+  function_name    = "${var.project}_info"
+  role             = aws_iam_role.lambda_role.arn
+  handler          = "lambda_info.lambda_handler"
+
+  tags = local.tags
+}
